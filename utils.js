@@ -7,6 +7,12 @@ export default {
     link.click()
     link.remove()
   },
+  add(src, dst) {
+    for (var key in src) {
+      dst[key] || (dst[key] = 0)
+      dst[key] += src[key]
+    }
+  },
   pad(len, c, s) {
     s = '' + s
     var prefix = c.repeat(len - s.length)
