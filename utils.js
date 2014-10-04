@@ -1,25 +1,27 @@
 export default {
   download(data, filename) {
-    var link = document.createElement('a')
+    // XXX this is browser only, maybe extract?
+    let link = document.createElement('a')
     link.download = filename
     link.href = `data:,${encodeURIComponent(data)}`
     document.body.appendChild(link)
     link.click()
     link.remove()
   },
+
   add(src, dst) {
-    for (var key in src) {
+    for (let key in src) {
       dst[key] || (dst[key] = 0)
       dst[key] += src[key]
     }
   },
   pad(len, c, s) {
     s = '' + s
-    var prefix = c.repeat(len - s.length)
+    let prefix = c.repeat(len - s.length)
     return prefix + s
   },
   seq(index, end) {
-    var arr = []
+    let arr = []
     while (index >= end)
       arr.push(index--)
     return arr
@@ -28,9 +30,9 @@ export default {
     return [].concat.apply([], arr)
   },
   group(arr, attr) {
-    var groups = {}
-    for (var item of arr) {
-      var key = item[attr]
+    let groups = {}
+    for (let item of arr) {
+      let key = item[attr]
       groups[key] || (groups[key] = [])
       groups[key].push(item)
     }
@@ -46,8 +48,8 @@ export default {
     })
   },
   values(obj) {
-    var vals = []
-    for (var key in obj)
+    let vals = []
+    for (let key in obj)
       vals.push(obj[key])
     return vals
   },
