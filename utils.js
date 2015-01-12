@@ -38,15 +38,12 @@ export default {
     }
     return groups
   },
-  sort() {
-    let args = [].slice.call(arguments)
-    let arr = args[0]
-    args = args.slice(1)
+  sort(arr, ...attrs) {
     arr.sort((a,b) => {
-      for (let i = 0; i < args.length; i++) {
-        if (a[args[i]] > b[args[i]])
+      for (let i = 0; i < attrs.length; i++) {
+        if (a[attrs[i]] > b[attrs[i]])
           return 1
-        if (a[args[i]] < b[args[i]])
+        if (a[attrs[i]] < b[attrs[i]])
           return -1
       }
       return 0
