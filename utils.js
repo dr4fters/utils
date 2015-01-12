@@ -39,18 +39,18 @@ export default {
     return groups
   },
   sort() {
-		let args = [].slice.call(arguments)
-		let arr = args[0]
-		args = args.slice(1)
-		arr.sort((a,b) => {
-			for (let i = 0; i < args.length; i++) {
-				if (a[args[i]] > b[args[i]])
-					return 1
-				if (a[args[i]] < b[args[i]])
-					return -1
-			}
-			return 0
-		})
+    let args = [].slice.call(arguments)
+    let arr = args[0]
+    args = args.slice(1)
+    arr.sort((a,b) => {
+      for (let i = 0; i < args.length; i++) {
+        if (a[args[i]] > b[args[i]])
+          return 1
+        if (a[args[i]] < b[args[i]])
+          return -1
+      }
+      return 0
+    })
   },
   values(obj) {
     let vals = []
