@@ -38,12 +38,14 @@ export default {
     }
     return groups
   },
-  sort(arr, attr) {
-    arr.sort((a, b) => {
-      if (a[attr] > b[attr])
-        return 1
-      if (a[attr] < b[attr])
-        return -1
+  sort(arr, ...attrs) {
+    arr.sort((a,b) => {
+      for (let i = 0; i < attrs.length; i++) {
+        if (a[attrs[i]] > b[attrs[i]])
+          return 1
+        if (a[attrs[i]] < b[attrs[i]])
+          return -1
+      }
       return 0
     })
   },
