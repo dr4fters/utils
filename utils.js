@@ -40,11 +40,17 @@ export default {
   },
   sort(arr, ...attrs) {
     arr.sort((a,b) => {
-      for (let i = 0; i < attrs.length; i++) {
-        if (a[attrs[i]] > b[attrs[i]])
-          return 1
-        if (a[attrs[i]] < b[attrs[i]])
-          return -1
+      for (let attr of attrs) {
+        if (typeof attr === 'function') {
+          let order = attr(a, b)
+          if (order !== 0)
+            return order
+        } else {
+          if (a[attr] > b[attr])
+            return 1
+          if (a[attr] < b[attr])
+            return -1
+        }
       }
       return 0
     })
